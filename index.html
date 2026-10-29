@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roshni Night · Diwali at Tina’s</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff7e8;--card:#ffffff;--ink:#3b1030;--mute:#7a4a63;--or:#ff8a00;--mg:#d81b7a;--pl:#6a1b9a;--gold:#ffc83d;--line:#f3d9b8;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d0a22;--card:#2c1233;--ink:#ffeedd;--mute:#d9a9c4;--line:#4a2253;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1d0a22;--card:#2c1233;--ink:#ffeedd;--mute:#d9a9c4;--line:#4a2253;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Poppins,system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
+canvas#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+h1,h2,h3{font-family:"Yatra One",Georgia,serif;font-weight:400;margin:0}
+.hero{position:relative;text-align:center;padding:48px 20px 70px;color:#fff;background:linear-gradient(160deg,#ff8a00 0%,#e8399a 55%,#6a1b9a 100%);overflow:hidden}
+.toran{position:absolute;top:0;left:0;right:0;height:34px;display:flex;justify-content:space-around;pointer-events:none}
+.toran i{width:26px;height:34px;background:var(--gold);clip-path:polygon(0 0,100% 0,50% 100%);opacity:.9;animation:sway 3s ease-in-out infinite;transform-origin:top}
+.toran i:nth-child(even){background:#fff3c4;animation-delay:-1.4s}
+@keyframes sway{50%{transform:rotate(8deg)}}
+.rangoli{width:min(300px,72vw);margin:10px auto 0;animation:spin 40s linear infinite;opacity:.95}
+@keyframes spin{to{transform:rotate(360deg)}}
+.eyebrow{letter-spacing:.25em;font-size:.72rem;text-transform:uppercase;opacity:.9;margin-top:14px}
+.hero h1{font-size:clamp(2.6rem,12vw,4.6rem);line-height:1.05;text-shadow:0 3px 18px rgba(80,0,60,.4);margin:6px 0}
+.tag{font-size:1.05rem;max-width:30ch;margin:8px auto 18px}
+.pill{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.55);padding:7px 15px;border-radius:99px;margin:4px;font-size:.9rem;backdrop-filter:blur(4px)}
+.btn{display:inline-block;border:0;cursor:pointer;font:600 1rem Poppins,sans-serif;color:#fff;background:linear-gradient(135deg,var(--mg),var(--or));padding:14px 28px;border-radius:99px;text-decoration:none;box-shadow:0 8px 22px rgba(216,27,122,.4);transition:transform .2s}
+.btn:active{transform:scale(.96)}
+.btn.alt{background:var(--card);color:var(--mg);box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.hero .btn{margin-top:14px}
+.wave{position:absolute;bottom:-1px;left:0;width:100%;height:46px}
+main{max-width:720px;margin:0 auto;padding:0 18px 60px}
+section{padding:44px 0 6px}
+section>h2{font-size:2rem;color:var(--mg);text-align:center}
+section>h2::after{content:"❁ ✦ ❁";display:block;font-size:.8rem;color:var(--or);letter-spacing:.5em;margin:4px 0 18px}
+.lead{text-align:center;color:var(--mute);max-width:46ch;margin:0 auto 20px}
+.rev{opacity:0;transform:translateY(26px);transition:all .7s ease}
+.rev.on{opacity:1;transform:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 6px 20px rgba(216,27,122,.08)}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px}
+.count div{background:linear-gradient(160deg,var(--mg),var(--pl));color:#fff;border-radius:16px;padding:14px 4px;text-align:center}
+.count b{display:block;font:400 2rem "Yatra One",serif}
+.count span{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.diyas{display:flex;justify-content:center;gap:10px;margin:8px 0}
+.diya{background:none;border:0;cursor:pointer;width:58px;padding:0;text-align:center}
+.diya .fl{height:34px;font-size:1.7rem;filter:grayscale(1) brightness(.6);opacity:.3;transform:scale(.6);transition:all .4s}
+.diya.lit .fl{filter:none;opacity:1;transform:scale(1);animation:flick .6s infinite alternate}
+@keyframes flick{to{transform:scale(1.15) rotate(4deg)}}
+.diya .bowl{height:20px;border-radius:0 0 40px 40px;background:linear-gradient(var(--or),#b34700);box-shadow:0 0 0 transparent;transition:box-shadow .4s}
+.diya.lit .bowl{box-shadow:0 0 22px 6px rgba(255,170,0,.65)}
+.msg{text-align:center;min-height:1.6em;color:var(--mg);font-weight:600}
+.tl{position:relative;margin:0;padding:0 0 0 28px;list-style:none}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:3px;border-radius:3px;background:linear-gradient(var(--or),var(--mg),var(--pl))}
+.tl li{position:relative;margin-bottom:14px}
+.tl li::before{content:"";position:absolute;left:-27px;top:20px;width:15px;height:15px;border-radius:50%;background:var(--gold);border:3px solid var(--mg)}
+.tl .t{font-weight:600;color:var(--or);font-size:.82rem;letter-spacing:.08em}
+.tl h3{font-size:1.25rem;color:var(--ink)}
+.tl p{margin:2px 0 0;color:var(--mute);font-size:.93rem}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.game{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 10px;text-align:center;cursor:pointer;font:inherit;color:var(--ink);transition:transform .25s}
+.game:hover{transform:translateY(-4px) rotate(-1deg)}
+.game .e{font-size:2rem;display:block}
+.game b{display:block;font-family:"Yatra One",serif;font-weight:400;font-size:1.05rem}
+.game small{display:block;color:var(--mute);max-height:0;opacity:0;overflow:hidden;transition:all .35s}
+.game.open small{max-height:100px;opacity:1;margin-top:4px}
+.dress{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x mandatory}
+.dc{flex:0 0 150px;scroll-snap-align:start;border-radius:18px;padding:16px 12px;color:#fff;text-align:center;min-height:170px;display:flex;flex-direction:column;justify-content:flex-end}
+.dc .e{font-size:2.4rem}
+.dc b{font-family:"Yatra One",serif;font-weight:400;font-size:1.1rem}
+.dc small{opacity:.92}
+.chk label{display:flex;gap:10px;align-items:center;padding:9px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+.chk label:last-child{border:0}
+.chk input{accent-color:var(--mg);width:19px;height:19px}
+.chk input:checked+span{text-decoration:line-through;opacity:.5}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{margin:8px 0 0;color:var(--mute)}
+form{display:grid;gap:14px}
+label.f{display:grid;gap:5px;font-weight:600;font-size:.9rem}
+input[type=text],select{font:inherit;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+input:focus,select:focus{outline:none;border-color:var(--mg)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg button{font:600 .88rem Poppins,sans-serif;padding:12px 4px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.seg button.sel{background:linear-gradient(135deg,var(--mg),var(--or));color:#fff;border-color:transparent}
+.pl{margin:0;padding-left:26px;font-size:.9rem}.pl li{padding:2px 0}.pl.two{columns:2;column-gap:18px}.pl-h{font-family:"Yatra One",serif;color:var(--mg);font-size:1.25rem}.pl-s{color:var(--mute);font-size:.82rem;margin:0 0 8px}
+#nobtn{transition:transform .28s cubic-bezier(.3,1.6,.5,1);position:relative;z-index:2}
+.qo{display:grid;gap:8px}
+.hide{display:none!important}
+.ok{text-align:center}
+.ok h3{font-size:1.8rem;color:var(--mg)}
+footer{text-align:center;color:var(--mute);padding:10px 20px 40px;font-size:.9rem}
+.theme{position:absolute;top:44px;right:12px;z-index:3;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:99px;width:38px;height:38px;cursor:pointer;font-size:1rem}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+
+<header class="hero">
+  <div class="toran" id="toran"></div>
+  <button class="theme" id="theme" aria-label="Toggle light or dark">🌙</button>
+  <svg class="rangoli" viewBox="-100 -100 200 200" aria-hidden="true">
+    <g id="rg"></g>
+    <circle r="14" fill="#ffc83d"/><circle r="7" fill="#d81b7a"/>
+  </svg>
+  <div class="eyebrow">Tina invites you to</div>
+  <h1>Roshni Night</h1>
+  <p class="tag">An evening of diyas, desi beats, good food and great company.</p>
+  <span class="pill">📅 Sat, 7 Nov</span><span class="pill">🕖 7 to 11 pm</span><span class="pill">📍 Chembur</span><span class="pill">🍾 BYOB</span>
+  <div><a class="btn" href="#rsvp">RSVP now</a></div>
+  <svg class="wave" viewBox="0 0 1200 46" preserveAspectRatio="none"><path d="M0 46V20C150 0 300 40 450 22S750 0 900 22 1100 40 1200 18V46Z" fill="var(--bg)"/></svg>
+</header>
+
+<main>
+<section class="rev"><h2>Countdown</h2>
+  <div class="count" id="count"><div><b>–</b><span>Days</span></div><div><b>–</b><span>Hours</span></div><div><b>–</b><span>Mins</span></div><div><b>–</b><span>Secs</span></div></div>
+</section>
+
+<section class="rev"><h2>Light a Diya</h2>
+  <p class="lead">Tap all five. Something fun happens. (Warm-up for the real thing.)</p>
+  <div class="diyas" id="diyas"></div><div class="msg" id="dmsg"></div>
+</section>
+
+<section class="rev"><h2>The Plan</h2>
+  <p class="lead">Roughly on schedule, fully on vibe.</p>
+  <ul class="tl">
+    <li class="card"><div class="t">7:00 PM</div><h3>Arrival shots</h3><p>Walk in, get a welcome shot, hand over your drinks to the shared table.</p></li>
+    <li class="card"><div class="t">7:30 PM</div><h3>Diya lighting</h3><p>We light up the house together. Phones out for photos.</p></li>
+    <li class="card"><div class="t">8:00 PM</div><h3>Snacks and playlist jam</h3><p>Chaat, mithai and the Diwali playlist on full volume.</p></li>
+    <li class="card"><div class="t">8:45 PM</div><h3>Game tables open</h3><p>Poker, Uno, board games and charades running side by side. Hop between tables as you like.</p></li>
+    <li class="card"><div class="t">10:00 PM</div><h3>Antakshari battle</h3><p>Teams, points and lots of laughs.</p></li>
+    <li class="card"><div class="t">10:45 PM</div><h3>Group photo and last round</h3><p>Everyone in frame. Winners get bragging rights.</p></li>
+    <li class="card"><div class="t">11:00 PM</div><h3>Shubh Raatri</h3><p>Lights down, safe rides home.</p></li>
+  </ul>
+</section>
+
+<section class="rev"><h2>Game Night</h2>
+  <p class="lead">Tap a card to see how it works.</p>
+  <div class="grid" id="games"></div>
+  <p style="text-align:center;margin:18px 0 0"><button class="btn" id="spin" type="button">🎲 Surprise me</button></p><div class="msg" id="spinmsg" style="margin-top:10px"></div>
+</section>
+
+<section class="rev"><h2>Which Guest Are You?</h2>
+  <p class="lead">Three quick taps and we’ll tell you your role at the party.</p>
+  <div class="card" id="quiz"></div>
+</section>
+
+<section class="rev"><h2>What to Wear</h2>
+  <div class="card" style="text-align:center"><div style="font-size:2.2rem">🥻 👘</div><b>Traditionals, please!</b><br>Come dressed in your festive best. Psst: Diwali hates all black. 🖤🚫</div>
+</section>
+
+<section class="rev"><h2>The Jam List</h2>
+  <p class="lead">Here’s what’s playing through the night. Want your song in? Add it in your RSVP below.</p>
+  <div class="card" style="margin-bottom:12px"><div class="pl-h">Warm-up</div><p class="pl-s">Soft background while guests arrive, snack and chat</p>
+  <ol class="pl"><li>Raga Jog</li><li>Albela Sajan</li><li>Mohe Rang Do Laal</li><li>Chaap Tilak</li><li>Aaj Jaane Ki Zid Na Karo</li><li>Iktara</li><li>Khaabon Ke Parinday</li></ol></div>
+  <div class="card"><div class="pl-h">Party mode</div><p class="pl-s">Best played in this order</p>
+  <ol class="pl two"><li>Amplifier</li><li>Mundian To Bach Ke</li><li>Proper Patola</li><li>Aahun Aahun</li><li>Desi Girl</li><li>Dilliwaali Girlfriend</li><li>Abhi Toh Party Shuru Hui Hai</li><li>Gasolina</li><li>Pon de Replay</li><li>Tunak Tunak Tun</li><li>Mauja Hi Mauja</li><li>Nagada Nagada</li><li>Kala Chashma</li><li>Kar Gayi Chull</li><li>London Thumakda</li><li>Gallan Goodiyan</li><li>Balam Pichkari</li><li>Munni Badnaam Hui</li><li>Sadi Gali</li><li>Ainvayi Ainvayi</li><li>Zingaat</li><li>Bolo Ta Ra Ra</li><li>Jai Jai Shivshankar</li><li>Dhinka Chika</li><li>Pyaar Ki Pungi</li><li>Brown Munde</li><li>Low</li><li>Yeah!</li><li>Danza Kuduro</li><li>Pepa</li><li>I Gotta Feeling</li><li>Party Rock Anthem</li><li>Gallan Goodiyan (the grand finale)</li></ol></div>
+</section>
+
+<section class="rev"><h2>House Rules</h2>
+  <div class="card chk">
+    <label><input type="checkbox"><span>BYOB: bring your own drinks, we’ll set up ice and glasses</span></label>
+    <label><input type="checkbox"><span>Come hungry, snacks are on us</span></label>
+    <label><input type="checkbox"><span>Bring your best festive vibes</span></label>
+  </div>
+</section>
+
+<section class="rev" id="rsvp"><h2>RSVP</h2>
+  <p class="lead">One form, thirty seconds. Please reply so we can plan the snacks.</p>
+  <div class="card">
+    <form id="form" novalidate>
+      <label class="f">Your name<input type="text" id="name" placeholder="e.g. Aarav Mehta" maxlength="60" autocomplete="name"></label>
+      <div><div style="font-weight:600;font-size:.9rem;margin-bottom:5px">Will you come?</div>
+        <div class="seg" id="st"><button type="button" data-v="Yes" class="sel">Yes 🎉</button><button type="button" data-v="Maybe">Maybe 🤔</button><button type="button" data-v="No" id="nobtn">Can’t 😢</button></div><div class="msg" id="nomsg"></div></div>
+      <label class="f">Bringing a +1?<select id="po"><option value="0">No, just me</option><option value="1">Yes, one guest</option></select></label>
+      <label class="f hide" id="pnw">+1’s name<input type="text" id="pn" maxlength="60"></label>
+      <label class="f">One song for the playlist (optional)<input type="text" id="song" maxlength="80" placeholder="Song – Artist"></label>
+      <div class="msg" id="err" style="color:#c62828"></div>
+      <button class="btn" type="submit">Send RSVP</button>
+    </form>
+    <div class="ok hide" id="ok"><h3>You’re on the list! 🪔</h3><p id="okp"></p>
+      <button class="btn alt hide" id="cp" type="button">Copy my RSVP</button></div>
+  </div>
+</section>
+</main>
+<footer>Made with love and marigolds.<br>Shubh Deepavali! 🪔</footer>
+
+<script>
+const $=s=>document.querySelector(s);
+// toran + rangoli
+$("#toran").innerHTML="<i></i>".repeat(14);
+(function(){let h="";const c=["#ffc83d","#fff3c4","#ff8a00","#ffffff"];
+for(let i=0;i<12;i++){h+=`<g transform="rotate(${i*30})"><ellipse cx="0" cy="-58" rx="13" ry="30" fill="${c[i%4]}" opacity=".9"/><circle cx="0" cy="-92" r="5" fill="${c[(i+1)%4]}"/></g>`}
+for(let i=0;i<12;i++){h+=`<g transform="rotate(${i*30+15})"><ellipse cx="0" cy="-34" rx="7" ry="16" fill="${c[(i+2)%4]}"/></g>`}
+$("#rg").innerHTML=h})();
+// theme toggle
+$("#theme").onclick=()=>{const r=document.documentElement,d=getComputedStyle(r).colorScheme==="dark";r.dataset.theme=d?"light":"dark";$("#theme").textContent=d?"🌙":"☀️"};
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".rev").forEach(el=>io.observe(el));
+// countdown
+const target=new Date("2026-11-07T19:00:00+05:30").getTime();
+function tick(){let d=target-Date.now();const b=document.querySelectorAll("#count b");
+if(d<=0){$("#count").innerHTML='<div style="grid-column:1/-1"><b>It’s party time! 🎉</b></div>';return}
+const v=[Math.floor(d/864e5),Math.floor(d/36e5)%24,Math.floor(d/6e4)%60,Math.floor(d/1e3)%60];
+v.forEach((n,i)=>b[i]&&(b[i].textContent=String(n).padStart(2,"0")))}
+tick();setInterval(tick,1000);
+// canvas: petals + fireworks
+const cv=$("#fx"),cx=cv.getContext("2d");let W,H;
+function rs(){W=cv.width=innerWidth*devicePixelRatio;H=cv.height=innerHeight*devicePixelRatio}rs();addEventListener("resize",rs);
+const pc=["#ff8a00","#ffb300","#ffc83d","#e8399a"];
+const petals=Array.from({length:26},()=>({x:Math.random()*W,y:Math.random()*H,r:(4+Math.random()*6)*devicePixelRatio,v:(.5+Math.random())*devicePixelRatio,s:Math.random()*6,c:pc[Math.random()*4|0]}));
+let sparks=[];
+function burst(x,y){for(let i=0;i<70;i++){const a=Math.random()*6.283,s=(1+Math.random()*4)*devicePixelRatio;sparks.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,c:pc[Math.random()*4|0]})}}
+function boom(){for(let i=0;i<5;i++)setTimeout(()=>burst((.15+Math.random()*.7)*W,(.15+Math.random()*.4)*H),i*250)}
+function frame(t){cx.clearRect(0,0,W,H);
+petals.forEach(p=>{p.y+=p.v;p.x+=Math.sin(t/900+p.s)*.7;if(p.y>H+10){p.y=-10;p.x=Math.random()*W}
+cx.save();cx.translate(p.x,p.y);cx.rotate(t/700+p.s);cx.fillStyle=p.c;cx.globalAlpha=.75;cx.beginPath();cx.ellipse(0,0,p.r,p.r*.55,0,0,6.283);cx.fill();cx.restore()});
+sparks=sparks.filter(s=>s.l>0);sparks.forEach(s=>{s.x+=s.vx;s.y+=s.vy;s.vy+=.05*devicePixelRatio;s.l-=.014;cx.globalAlpha=Math.max(s.l,0);cx.fillStyle=s.c;cx.beginPath();cx.arc(s.x,s.y,2.2*devicePixelRatio,0,6.283);cx.fill()});
+cx.globalAlpha=1;requestAnimationFrame(frame)}
+requestAnimationFrame(frame);
+addEventListener("pointerdown",e=>{if(!e.target.closest("input,select,textarea"))burst(e.clientX*devicePixelRatio,e.clientY*devicePixelRatio)});
+// diyas
+const dm=["Keep going…","Two down!","Halfway to glory","One more!","Happy Diwali! 🎆"];let lit=0;
+$("#diyas").innerHTML=Array.from({length:5},()=>'<button class="diya" aria-label="Light diya"><div class="fl">🔥</div><div class="bowl"></div></button>').join("");
+document.querySelectorAll(".diya").forEach(b=>b.onclick=()=>{if(b.classList.contains("lit"))return;b.classList.add("lit");lit++;$("#dmsg").textContent=dm[lit-1];if(lit===5)boom()});
+// games
+const games=[["♠️","Poker","Cash game, friendly stakes. New to it? We’ll teach you."],["🃏","Uno","Fast, fun and a little competitive."],["🎲","Board games","Pull up a chair and join a table."],["🎬","Bollywood charades","Act out the film, no words allowed."],["🎤","Antakshari","Teams sing the next song from the last letter."],["📱","Heads Up","Phone on forehead, friends shout clues."],["✨","And more","A few surprises through the evening."],["🪔","Best dressed vote","Everyone votes. The winner gets a crown."]];
+$("#games").innerHTML=games.map(g=>`<button class="game"><span class="e">${g[0]}</span><b>${g[1]}</b><small>${g[2]}</small></button>`).join("");
+document.querySelectorAll(".game").forEach(b=>b.onclick=()=>b.classList.toggle("open"));
+// rsvp
+let status="Yes";
+const SHEET_URL="https://script.google.com/macros/s/AKfycbycKUzNXOxHpCiQRs94_MXKfv8Xi50FzQpoBaR8K7b8fVi0Ud2zjAj6dudYFSSX2AHxtw/exec";
+document.querySelectorAll("#st button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#st button").forEach(x=>x.classList.remove("sel"));b.classList.add("sel");status=b.dataset.v});
+$("#po").onchange=()=>$("#pnw").classList.toggle("hide",$("#po").value==="0");
+try{const s=localStorage.getItem("roshni-rsvp");if(s){showOk(JSON.parse(s),true)}}catch(e){}
+function showOk(r,saved){$("#form").classList.add("hide");$("#ok").classList.remove("hide");
+$("#okp").textContent=r.status==="No"?"Sorry we’ll miss you, "+r.name+". Next time!":"See you on 7 Nov, "+r.name+(r.plusOne?" and "+(r.plusName||"your +1"):"")+". Exact address will be shared closer to the day.";
+if(!saved){$("#cp").classList.remove("hide");$("#cp").onclick=()=>{const t=`RSVP for Roshni Night (7 Nov, Chembur): ${r.name}, ${r.status}${r.plusOne?", +1: "+(r.plusName||"yes"):""}${r.song?", song: "+r.song:""}`;try{navigator.clipboard.writeText(t);$("#cp").textContent="Copied! Send it to Tina"}catch(e){$("#cp").textContent=t}}}
+if(r.status!=="No")boom()}
+$("#form").onsubmit=async e=>{e.preventDefault();const name=$("#name").value.trim();
+if(!name){$("#err").textContent="Please add your name 🙏";return}$("#err").textContent="";
+const r={name,status,plusOne:$("#po").value==="1",plusName:$("#pn").value.trim(),song:$("#song").value.trim(),at:new Date().toISOString()};
+let saved=false;
+try{if(!SHEET_URL.includes("PASTE")){await fetch(SHEET_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(r)});saved=true}}catch(x){}
+if(saved){try{localStorage.setItem("roshni-rsvp",JSON.stringify(r))}catch(x){}}
+showOk(r,saved)};
+// surprise game picker
+let sp;$("#spin").onclick=()=>{clearInterval(sp);let n=0;sp=setInterval(()=>{const g=games[Math.random()*games.length|0];$("#spinmsg").textContent=g[0]+" "+g[1];if(++n>12){clearInterval(sp);$("#spinmsg").textContent="Tonight, try: "+g[0]+" "+g[1]+"!";boom()}},90)};
+// guest quiz
+const qz=[["How do you arrive?",[["🍬 Straight to the snacks","S"],["✨ Dressed to the nines","D"],["🃏 With a deck of cards","G"],["🎶 Humming a tune","A"]]],["Your go-to party move?",[["🥣 Guarding the chaat bowl","S"],["💃 Taking over the dance floor","D"],["🎲 Finding the game table","G"],["🎤 Starting a sing-along","A"]]],["Your Diwali superpower?",[["🍯 Finding the best mithai","S"],["🔥 Never sitting down","D"],["♠️ Reading the room (and the cards)","G"],["📻 Remembering every lyric","A"]]]];
+const qr={S:["The Snack Boss 🍬","You’ll be the reason the chaat disappears first. We love that for you."],D:["The Dance Floor Star 💃","The playlist was made for you. Please save a spot for the rest of us."],G:["The Game Master 🃏","You’ll have a table full of friends in minutes. Cards are on you."],A:["The Antakshari Captain 🎤","Every team wants you. Your lyric memory is legendary."]};
+let qi=0,tally={};
+function quiz(){const q=$("#quiz");if(qi>=qz.length){const k=Object.keys(tally).sort((a,b)=>tally[b]-tally[a])[0];q.innerHTML=`<div class="ok"><div style="font-size:.78rem;letter-spacing:.15em;color:var(--mute)">YOU ARE</div><h3>${qr[k][0]}</h3><p>${qr[k][1]}</p><button class="btn alt" id="qa" type="button">Try again</button></div>`;boom();$("#qa").onclick=()=>{qi=0;tally={};quiz()};return}
+q.innerHTML=`<div style="font-size:.78rem;color:var(--mute)">Question ${qi+1} of 3</div><h3 style="margin:4px 0 12px;font-size:1.3rem">${qz[qi][0]}</h3><div class="qo">${qz[qi][1].map(o=>`<button type="button" class="game" data-k="${o[1]}">${o[0]}</button>`).join("")}</div>`;
+q.querySelectorAll("button").forEach(b=>b.onclick=()=>{tally[b.dataset.k]=(tally[b.dataset.k]||0)+1;qi++;quiz()})}
+quiz();
+// cheeky No button
+const nb=$("#nobtn"),nm=["Nice try 😏","Diwali says no to No","Tina will know 👀","The button is shy","Too slow! 🏃","Come on, the snacks are free","Last warning… 🪔"];let tries=0;
+nb.onclick=null;
+function pickYes(){document.querySelectorAll("#st button").forEach(x=>x.classList.remove("sel"));nb.classList.add("sel");status="Yes"}
+function dodge(e){if(nb.dataset.v==="Yes")return;e.preventDefault();e.stopPropagation();tries++;
+if(tries>=7){nb.textContent="Okay, Yes! 🎉";nb.dataset.v="Yes";nb.style.transform="";$("#nomsg").textContent="We knew you’d come around 😉";nb.onclick=pickYes;pickYes();boom();return}
+nb.style.transform=`translate(${(Math.random()-.5)*80}px,${(Math.random()-.5)*100}px) rotate(${(Math.random()-.5)*30}deg)`;$("#nomsg").textContent=nm[Math.min(tries-1,nm.length-1)]}
+["pointerenter","touchstart","click"].forEach(ev=>nb.addEventListener(ev,dodge,{passive:false}));
+</script>
+</body>
+</html>
